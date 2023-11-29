@@ -1,0 +1,5 @@
+Commence par creer un programme qui affiche une fenetre grace a MLX, puis une image avec differente formes geometrique selon le choix de l'utilisateur.
+- Proteger les fonctions mlx, ainsi que l'env -i
+- Gestion des arguments (choix utilisateur)
+- message d'aide utilisateur au lancement et en cas d'erreur
+- pouvoir fermer la fenetre avec la croix ou ESC
