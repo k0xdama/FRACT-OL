@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   testminilib.c                                      :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 17:53:51 by pmateo            #+#    #+#             */
-/*   Updated: 2023/11/30 20:29:58 by pmateo           ###   ########.fr       */
+/*   Created: 2023/11/30 20:26:53 by pmateo            #+#    #+#             */
+/*   Updated: 2023/11/30 21:09:42 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,15 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-
-
-int	main()
+int	main(int argc, char *agrv[])
 {
-	void	*mlx;
-	void	*win;
-	t_data	img;
-	int	x = 0;
-	int y = 0;
 	
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 1920, 1080, "mlx 42");
-	img.img = mlx_new_image(mlx, 1920, 1080);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-																 &img.endian);
-	printf("BITS PER PIXEL = %d\n", img.bits_per_pixel);
-	printf("LINE LENGTH = %d\n", img.line_length);
-	my_mlx_pixel_put(&img, 960, 540, 0x00FF0000);
-	printf("BITS PER PIXEL = %d\n", img.bits_per_pixel);
-	printf("LINE LENGTH = %d\n", img.line_length);
-	mlx_put_image_to_window(mlx, win, img.img, 0, 0);
-	mlx_loop(mlx);
 }
+
+
+
+
+
+
+// Le programme se lance et affiche les choix de formes géométriques disponibles, il attend une entrée de 
+// l'utilisateur. Si un mauvais choix est fait un message d'aide s'affiche.
