@@ -6,7 +6,7 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:53:51 by pmateo            #+#    #+#             */
-/*   Updated: 2023/11/30 20:29:58 by pmateo           ###   ########.fr       */
+/*   Updated: 2023/11/30 23:41:44 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ int	main()
 	img.img = mlx_new_image(mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 																 &img.endian);
-	printf("BITS PER PIXEL = %d\n", img.bits_per_pixel);
-	printf("LINE LENGTH = %d\n", img.line_length);
+	// printf("BITS PER PIXEL = %d\n", img.bits_per_pixel);
+	// printf("LINE LENGTH = %d\n", img.line_length);
 	my_mlx_pixel_put(&img, 960, 540, 0x00FF0000);
-	printf("BITS PER PIXEL = %d\n", img.bits_per_pixel);
-	printf("LINE LENGTH = %d\n", img.line_length);
+	// printf("BITS PER PIXEL = %d\n", img.bits_per_pixel);
+	// printf("LINE LENGTH = %d\n", img.line_length);
 	mlx_put_image_to_window(mlx, win, img.img, 0, 0);
 	mlx_loop(mlx);
 }
