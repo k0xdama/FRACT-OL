@@ -1,5 +1,37 @@
-Commence par creer un programme qui affiche une fenetre grace a MLX, puis une image avec differente formes geometrique selon le choix de l'utilisateur.
+########################### PATHFINDER ###################################
 - Proteger les fonctions mlx, ainsi que l'env -i
 - Gestion des arguments (choix utilisateur)
 - message d'aide utilisateur au lancement et en cas d'erreur
-- pouvoir fermer la fenetre avec la croix ou ESC
+
+
+STRUCTURE DE DONNEES :
+- Stocker les infos de minilibx (*mlx, *win, *img, *addr)
+- Stocker les nombres reel et imaginaire (min, max) (type : double)
+-
+-
+
+ORGANISATION DES FICHIERS :
+
+------INCLUDES------
+	-fractol.h
+	- ?
+
+------FRACTALS------
+	-mandelbrot.c
+	-julia.c
+	-mandelbox.c
+	-burningship.c
+
+------DRAW------
+	-render.c
+
+------COLORTOOLS------
+	- ?
+
+------EVENTS------
+	-mouse.c
+	-keypadbutton.c
+
+------UTILS------
+
+

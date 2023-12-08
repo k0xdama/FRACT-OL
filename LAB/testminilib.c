@@ -6,7 +6,7 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:53:51 by pmateo            #+#    #+#             */
-/*   Updated: 2023/12/06 20:45:10 by pmateo           ###   ########.fr       */
+/*   Updated: 2023/12/08 22:15:36 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,24 +62,31 @@ int	handle_keypress(int keysm, t_data *data)
 	return (0);
 }
 
-void	img_pix_put(t_img *img, int x, int y, int color)
+void	img_pix_put(t_data *data, int x, int y, int color)
 {
-	char	*pixel;
+	char	pixel;
 	int		i;
 
-	i = img->bpp - 8;
-	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	while (i >= 0)
+	if (data->img.bpp != 32)
+		color = mlx_get_color_value(data->mlx_ptr, color);
+	pixel = (y * data->img.line_len) + (x * 4);
+	if (data->img.endian == 1)
 	{
-		if (img->endian != 0)
-			*pixel++ = (color >> i) & 0xFF;
-		else
-			*pixel++ = (color >> (img->bpp - 8 - i)) & 0xFF;
-		i -= 8;
+		data->img.addr[pixel] = (color >> 24);
+		data->img.addr[pixel + 1] = (color >> 16) & 0xFF;
+		data->img.addr[pixel + 2] = (color >> 8) & 0xFF;
+		data->img.addr[pixel + 3] = (color) & 0xFF;
+	}
+	else if (data->img.endian == 0)
+	{
+		data->img.addr[pixel] = (color) & 0xFF;
+		data->img.addr[pixel + 1] = (color >> 8) & 0xFF;
+		data->img.addr[pixel + 2] = (color >> 16) & 0xFF;
+		data->img.addr[pixel + 3] = (color >> 24);
 	}
 }
 
-void	render_background(t_img *img, int color)
+void	render_background(t_data *data, int color)
 {
 	int	i;
 	int	j;
@@ -89,12 +96,12 @@ void	render_background(t_img *img, int color)
 	{
 		j = 0;
 		while (j < WINDOW_WIDTH)
-			img_pix_put(img, j++, i, color);
+			img_pix_put(data, j++, i, color);
 		++i;
 	}
 }
 
-int	render_rect(t_img *img, t_rect rect)
+int	render_rect(t_data *data, t_rect rect)
 {
 	int	i;
 	int	j;
@@ -104,7 +111,7 @@ int	render_rect(t_img *img, t_rect rect)
 	{
 		j = rect.x;
 		while (j < rect.x + rect.width)
-			img_pix_put(img, j++, i, rect.color);
+			img_pix_put(data, j++, i, rect.color);
 		++i;
 	}
 	return (0);
@@ -114,9 +121,9 @@ int	render(t_data *data)
 {
 	if (data->win_ptr == NULL)
 		return (1);
-	render_background(&data->img, WHITE_PIXEL);
-	render_rect(&data->img, (t_rect){WINDOW_WIDTH - 100, WINDOW_HEIGHT - 100, 100, 100, GREEN_PIXEL});
-	render_rect(&data->img, (t_rect){0, 0, 100, 100, RED_PIXEL});
+	render_background(data, WHITE_PIXEL);
+	render_rect(data, (t_rect){WINDOW_WIDTH - 100, WINDOW_HEIGHT - 100, 100, 100, GREEN_PIXEL});
+	render_rect(data, (t_rect){0, 0, 100, 100, RED_PIXEL});
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img, 0, 0);
 	return (0);
 }
