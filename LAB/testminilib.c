@@ -6,7 +6,7 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:53:51 by pmateo            #+#    #+#             */
-/*   Updated: 2023/12/08 22:15:36 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/01/10 15:50:28 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,41 +65,49 @@ int	handle_keypress(int keysm, t_data *data)
 void	img_pix_put(t_data *data, int x, int y, int color)
 {
 	char	pixel;
-	int		i;
+	int		x;
+	int		y;
 
+	x = 0;
+	y = 0;
 	if (data->img.bpp != 32)
 		color = mlx_get_color_value(data->mlx_ptr, color);
-	pixel = (y * data->img.line_len) + (x * 4);
-	if (data->img.endian == 1)
+	while (y < 360 && x < 640)
 	{
-		data->img.addr[pixel] = (color >> 24);
-		data->img.addr[pixel + 1] = (color >> 16) & 0xFF;
-		data->img.addr[pixel + 2] = (color >> 8) & 0xFF;
-		data->img.addr[pixel + 3] = (color) & 0xFF;
-	}
-	else if (data->img.endian == 0)
-	{
-		data->img.addr[pixel] = (color) & 0xFF;
-		data->img.addr[pixel + 1] = (color >> 8) & 0xFF;
-		data->img.addr[pixel + 2] = (color >> 16) & 0xFF;
-		data->img.addr[pixel + 3] = (color >> 24);
+		++y;
+		++x;
+		pixel = (y * data->img.line_len) + (x * 4);
+		if (data->img.endian == 1)
+		{
+			buffer[pixel] = (color >> 24);
+			buffer[pixel + 1] = (color >> 16) & 0xFF;
+			buffer[pixel + 2] = (color >> 8) & 0xFF;
+			buffer[pixel + 3] = (color) & 0xFF;
+		}
+		else if (data->img.endian == 0)
+		{
+			buffer[pixel] = (color) & 0xFF;
+			buffer[pixel + 1] = (color >> 8) & 0xFF;
+			buffer[pixel + 2] = (color >> 16) & 0xFF;
+			buffer[pixel + 3] = (color >> 24);
+		}
 	}
 }
 
-void	render_background(t_data *data, int color)
-{
-	int	i;
-	int	j;
+// void	render_background(t_data *data, int color)
+// {
+// 	int	i;
+// 	int	j;
 
-	i = 0;
-	while (i < WINDOW_HEIGHT)
-	{
-		j = 0;
-		while (j < WINDOW_WIDTH)
-			img_pix_put(data, j++, i, color);
-		++i;
-	}
-}
+// 	i = 0;
+// 	while (i < WINDOW_HEIGHT)
+// 	{
+// 		j = 0;
+// 		while (j < WINDOW_WIDTH)
+// 			img_pix_put(data, j++, i, color);
+// 		++i;
+// 	}
+// }
 
 int	render_rect(t_data *data, t_rect rect)
 {
