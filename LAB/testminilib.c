@@ -6,7 +6,7 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:53:51 by pmateo            #+#    #+#             */
-/*   Updated: 2024/01/10 15:50:28 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/02/13 21:18:24 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,17 +79,17 @@ void	img_pix_put(t_data *data, int x, int y, int color)
 		pixel = (y * data->img.line_len) + (x * 4);
 		if (data->img.endian == 1)
 		{
-			buffer[pixel] = (color >> 24);
-			buffer[pixel + 1] = (color >> 16) & 0xFF;
-			buffer[pixel + 2] = (color >> 8) & 0xFF;
-			buffer[pixel + 3] = (color) & 0xFF;
+			data->img.addr[pixel] = (color >> 24);
+			data->img.addr[pixel + 1] = (color >> 16) & 0xFF;
+			data->img.addr[pixel + 2] = (color >> 8) & 0xFF;
+			data->img.addr[pixel + 3] = (color) & 0xFF;
 		}
 		else if (data->img.endian == 0)
 		{
-			buffer[pixel] = (color) & 0xFF;
-			buffer[pixel + 1] = (color >> 8) & 0xFF;
-			buffer[pixel + 2] = (color >> 16) & 0xFF;
-			buffer[pixel + 3] = (color >> 24);
+			data->img.addr[pixel] = (color) & 0xFF;
+			data->img.addr[pixel + 1] = (color >> 8) & 0xFF;
+			data->img.addr[pixel + 2] = (color >> 16) & 0xFF;
+			data->img.addr[pixel + 3] = (color >> 24);
 		}
 	}
 }
