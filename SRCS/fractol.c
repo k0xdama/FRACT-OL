@@ -6,7 +6,7 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 20:26:53 by pmateo            #+#    #+#             */
-/*   Updated: 2024/02/13 21:19:45 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/02/15 19:58:30 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,10 +144,6 @@ int main(void)
 	mlx_destroy_display(data.mlx_ptr);
 	free(data.mlx_ptr);
 }
-
-
-
-
 
 
 // Le programme se lance et affiche les choix de formes géométriques disponibles, il attend une entrée de 

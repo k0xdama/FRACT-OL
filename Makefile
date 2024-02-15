@@ -6,7 +6,7 @@
 #    By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 18:05:18 by pmateo            #+#    #+#              #
-#    Updated: 2024/02/13 20:45:09 by pmateo           ###   ########.fr        #
+#    Updated: 2024/02/15 19:57:17 by pmateo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,13 +28,13 @@ DIRINC_LIBFT = ${DIR_LIBFT}/INCLUDES
 DIRINC_MLX = ${DIR_MLX}
 INCFILES = ${DIRINC_FRACTOL}/fractol.h
 
-DIR_SRCS = ./SRCS
+DIR_SRCS = ./SRCS/
 SRCS =				fractol.c
 
-OBJ = ${SRC:.c=.o}
+OBJ = ${SRCS:.c=.o}
 
-${OBJ}: %.o: %.c ${INCFILES}
-	@${CC} ${FLAGS} -o $@ -c $< -I ${DIRINC_FRACTOL} -I ${DIRINC_LIBFT} -I ${DIRINC_MLX}
+%.o: ${DIR_SRCS}%.c
+	@${CC} ${FLAGS} -c $< -o $@ -I ${DIRINC_FRACTOL} -I ${DIRINC_LIBFT} -I ${DIRINC_MLX}
 
 ${LIBFT}:
 	@${MAKE} -s -C ${DIR_LIBFT}
@@ -57,7 +57,6 @@ clean:
 
 fclean: clean
 		@${MAKE} -s -C ${DIR_LIBFT} fclean
-		@${MAKE} -s -C ${DIR_MLX} fclean
 		@${RM} ${NAME}
 		@echo "\033[1;9;35m# No more executable files. #\033[0m"
 
