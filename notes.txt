@@ -40,7 +40,7 @@ ETAPE :
 - Modifier ce programme pour afficher la moitié de l'écran en rouge et l'autre en vert.
 
 - Modifier le programme pour afficher une fenêtre remplie de pixel blanc.
-- Trouver les coordonnées du pixel au centre de l'image
+- Trouver les coordonnées du pixel au centre de l'image (pour une image en 1920 x 1080 le pixel du milieu sera en 960,540)
 - Les traduire pour avoir sa position dans le plan complexe
  - Calculer les prochains termes de la suite de l'Ensemble de Julia, si la suite diverge on affiche du blanc
 	si la suite de diverge pas au bout d'un certain nombre d'itération on affiche du noir.
