@@ -6,7 +6,7 @@
 #    By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 18:05:18 by pmateo            #+#    #+#              #
-#    Updated: 2024/02/15 19:57:17 by pmateo           ###   ########.fr        #
+#    Updated: 2024/02/19 17:09:25 by pmateo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ ${MLX}:
 	@${MAKE} -s -C ${DIR_MLX}
 
 ${NAME}: ${OBJ} ${LIBFT} ${MLX} 
-	@${CC} ${FLAGS} -o ${NAME} ${OBJ} -I ${DIRINC_FRACTOL} -I ${DIRINC_LIBFT} -I ${DIRINC_MLX} -lXext -lX11 -lm
+	@${CC} ${FLAGS} -o ${NAME} ${OBJ} -I ${DIRINC_FRACTOL} -I ${DIRINC_LIBFT} -I ${DIRINC_MLX} -L ${DIR_MLX} -lXext -lX11 -lmlx
 
 all: ${LIBFT} ${MLX} ${NAME}
 
