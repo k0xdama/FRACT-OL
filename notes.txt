@@ -44,4 +44,4 @@ ETAPE :
 - Les traduire pour avoir sa position dans le plan complexe
  - Calculer les prochains termes de la suite de l'Ensemble de Julia, si la suite diverge on affiche du blanc
 	si la suite de diverge pas au bout d'un certain nombre d'itération on affiche du noir.
-- TATATITATATA
+- 
