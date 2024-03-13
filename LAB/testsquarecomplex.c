@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ini.c                                              :+:      :+:    :+:   */
+/*   testsquarecomplex.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/08 05:31:38 by pmateo            #+#    #+#             */
-/*   Updated: 2024/03/13 17:04:18 by pmateo           ###   ########.fr       */
+/*   Created: 2024/03/13 04:07:33 by pmateo            #+#    #+#             */
+/*   Updated: 2024/03/13 04:18:15 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCLUDES/fractol.h"
+#include <stdio.h>
 
-void	init_data(t_data *data)
+typedef struct s_complex
 {
-	data->mlxptr = NULL;
-	data->winptr = NULL;
-	data->img = NULL;
-	data->imgbuf = NULL;
-	data->img_bpp = 0;
-	data->img_len = 0;
-	data->img_endian = 0;
-	data->choice = 0;
-	data->julia_set = 0;
-	data->xmax = 1.25;
-	data->xmin = -1.25;
-	data->ymax = 1.25;
-	data->ymin = -1.25;
-	data->x = 0;
-	data->y = 0;
+	double	real;
+	double	i;
+}	t_complex;
+
+
+void	square_complex(t_complex *z)
+{
+	double tmp_real;
+	
+	tmp_real = 0.0;
+	tmp_real = (z->real * z->real) - (z->i * z->i);
+	z->i = 2 * z->real * z->i;
+	z->real = tmp_real;
 }
 
-void	init_mlx()
+int	main(void)
 {
-	
-}
+	t_complex	result;
 
-void	init_img()
-{
-	
+	result.real = 5.0;
+	result.i = 2.0;
+	square_complex(&result);
+	printf("real = %f imaginary = %f\n", result.real, result.i);
 }

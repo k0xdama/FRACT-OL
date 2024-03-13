@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   testcomplex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/08 05:23:36 by pmateo            #+#    #+#             */
-/*   Updated: 2024/03/13 04:30:26 by pmateo           ###   ########.fr       */
+/*   Created: 2024/03/12 21:56:08 by pmateo            #+#    #+#             */
+/*   Updated: 2024/03/13 03:35:05 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCLUDES/fractol.h"
+#include <stdio.h>
 
-int	prog_exit()
+typedef struct s_complex
 {
-	
-}
+	double real;
+	double i;
+}		t_complex;
 
 double handle_decimals(char *str)
 {
@@ -57,4 +58,31 @@ double	atodbl(char	*str)
 			decimals = handle_decimals(str+i+1);
 	}
 	return ((result + decimals) * sign);
+}
+
+int	main(int argc, char *argv[])
+{
+	t_complex z;
+	t_complex c;
+	double	tmp_real;
+	int i;
+	i = 0;
+	if (argc < 3)
+		return (1);
+	z.real = 0;
+	z.i	= 0;
+
+	c.real = atodbl(argv[1]);
+	c.i = atodbl(argv[2]);
+
+	while (i < 42)
+	{
+		tmp_real = (z.real * z.real) - (z.i * z.i);
+		z.i = 2 * z.real * z.i;
+		z.real = tmp_real;
+		z.real += c.real;
+		z.i += c.i;
+		printf("iteration %d = real %f imaginary %f\n", i, z.real, z.i);
+		i++;
+	}
 }

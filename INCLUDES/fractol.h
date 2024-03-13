@@ -6,7 +6,7 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 20:28:00 by pmateo            #+#    #+#             */
-/*   Updated: 2024/03/08 18:37:13 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/03/13 17:02:45 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_data
 	int		img_len;
 	int		img_endian;
 	int		choice;
+	int		julia_set;
 	double	xmax;
 	double	xmin;
 	double	ymax;
@@ -45,7 +46,15 @@ typedef struct s_data
 	double	x;
 	double	y;
 	
+	
 }	t_data;
+
+typedef	struct	s_complex
+{
+	double	real;
+	double	i;
+}	t_complex;
+
 
 
 

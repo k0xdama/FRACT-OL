@@ -1,42 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ini.c                                              :+:      :+:    :+:   */
+/*   testscale.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/08 05:31:38 by pmateo            #+#    #+#             */
-/*   Updated: 2024/03/13 17:04:18 by pmateo           ###   ########.fr       */
+/*   Created: 2024/03/13 13:30:31 by pmateo            #+#    #+#             */
+/*   Updated: 2024/03/13 14:33:20 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCLUDES/fractol.h"
+#include <stdio.h>
 
-void	init_data(t_data *data)
+double	scale(double unscaled, double new_min, double new_max, double old_min, double old_max)
 {
-	data->mlxptr = NULL;
-	data->winptr = NULL;
-	data->img = NULL;
-	data->imgbuf = NULL;
-	data->img_bpp = 0;
-	data->img_len = 0;
-	data->img_endian = 0;
-	data->choice = 0;
-	data->julia_set = 0;
-	data->xmax = 1.25;
-	data->xmin = -1.25;
-	data->ymax = 1.25;
-	data->ymin = -1.25;
-	data->x = 0;
-	data->y = 0;
+	return ((new_max - new_min) * (unscaled - old_min) / (old_max - old_min) + new_min);
 }
 
-void	init_mlx()
+int	main(void)
 {
-	
-}
+	int	i;
 
-void	init_img()
-{
-	
+	i = 1;
+	while (i < 41)
+	{
+		printf("%d = %f\n", i, scale(i, -2.0, 2.0, 0, 40));
+		i++;
+	}
+
+	// i = 5;
+	// printf("%d = %f\n", i, scale((double)i, -2.0, 2.0, 0, 199));
 }
