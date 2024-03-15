@@ -6,7 +6,7 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 20:26:53 by pmateo            #+#    #+#             */
-/*   Updated: 2024/03/08 18:28:21 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/03/15 04:04:54 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,21 @@ int	handle_keypress(int keysm, t_data *data)
 	return (0);
 }
 
-void	check_args(char argv[], t_data *data)
+int	check_args(char argv[], t_data *data)
 {
-	if (argv[1] == 1)
-		data->choice = JULIA;
-	if (argv[1] == 2)
+	// if (argv[1] == JULIA)
+	// 	data->choice = JULIA;
+	if (argv[1] == MANDELBROT)
 		data->choice = MANDELBROT;
-	if (argv[1] == 3)
-		data->choice = MANDELBOX;
+	// if (argv[1] == MANDELBOX)
+	// 	data->choice = MANDELBOX;
 }
 
 int main(int argc, char *argv[])
 {
 	t_data	data;
 
-	if (argc < 2)
+	if (argc < 2 || argc > 4)
 	{
 		init_data(&data);
 		bad_args();
@@ -71,6 +71,6 @@ int main(int argc, char *argv[])
 		prog_exit();
 	}
 	init_data(&data);
-	check_args(argv, &data);
+	check_args(argv, argc, &data);
 	
 }

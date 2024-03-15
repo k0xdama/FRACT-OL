@@ -6,7 +6,7 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:53:51 by pmateo            #+#    #+#             */
-/*   Updated: 2024/02/19 18:35:35 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/03/15 01:59:11 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define WINDOW_WIDTH 1920
 #define WINDOW_HEIGHT 1080
 
-#define MLX_ERROR 1
+#define MLX_ERROR -1
 
 #define GREEN_PIXEL 0x0000FF00
 #define BLUE_PIXEL 0xFF000000

@@ -6,15 +6,34 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 05:23:36 by pmateo            #+#    #+#             */
-/*   Updated: 2024/03/13 04:30:26 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/03/15 04:59:12 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../INCLUDES/fractol.h"
 
-int	prog_exit()
-{
+// int	prog_exit()
+// {
 	
+// }
+
+void	check_args(char argv[], int argc, t_data *data)
+{
+	if (argv[1] >= '0' && argv[1] <= '9')
+	{
+		// if (argv[1] == JULIA)
+		// 	data->choice = JULIA;
+		// if (argv[1] == MANDELBROT && argc == 2)
+		// 	data->choice = MANDELBROT;
+		// else
+		// 	bad_args();
+		if (argv[1] == MANDELBOX && argc == 2)
+			data->choice = MANDELBOX;
+		else
+			bad_args();
+	}
+	else
+		bad_args();
 }
 
 double handle_decimals(char *str)
