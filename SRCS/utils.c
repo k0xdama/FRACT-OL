@@ -6,7 +6,7 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 05:23:36 by pmateo            #+#    #+#             */
-/*   Updated: 2024/03/15 04:59:12 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/03/18 05:25:19 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,17 @@
 	
 // }
 
-void	check_args(char argv[], int argc, t_data *data)
-{
-	if (argv[1] >= '0' && argv[1] <= '9')
-	{
-		// if (argv[1] == JULIA)
-		// 	data->choice = JULIA;
-		// if (argv[1] == MANDELBROT && argc == 2)
-		// 	data->choice = MANDELBROT;
-		// else
-		// 	bad_args();
-		if (argv[1] == MANDELBOX && argc == 2)
-			data->choice = MANDELBOX;
-		else
-			bad_args();
-	}
-	else
-		bad_args();
-}
-
 double handle_decimals(char *str)
 {
 	double	decimals;
+	double	divisor;
 	
 	decimals = 0;
+	divisor = 1;
 	while ((*str >= '0' && *str <= '9') && (*str))
 	{
-		decimals = decimals / 10 + (*str - '0');
+		divisor /= 10;
+		decimals = decimals + (*str - '0') * divisor;
 		str++;
 	}
 	return (decimals);
@@ -64,12 +48,15 @@ double	atodbl(char	*str)
 	while (str[i] != '\0' && str[i] != '.')
 	{
 		if (str[i] == '-' && (str[i + 1] >= '0' && str[i + 1] <= '9'))
+		{
 			sign *= -1;
+			i++;
+		}
 		while (str[i] <= '0' && str[i] >= '9')
 			i++;
 		while ((str[i] >= '0' && str[i] <= '9') && (str[i] != '.'))
 		{
-			result = result * 10 + (*str - '0');
+			result = result * 10 + (str[i] - '0');
 			i++;
 		}
 		if (str[i] == '.')

@@ -6,7 +6,7 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 05:11:51 by pmateo            #+#    #+#             */
-/*   Updated: 2024/03/15 00:51:17 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/03/18 01:12:25 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 void	bad_args()
 {
-	ft_printf("WARNING :\n");
-	ft_printf("There is a problem with given arguments, their number is incorrect or they're not as expected.\n");
-	ft_printf("REMINDER :\n");
+	ft_printf("WARNING\n");
+	ft_printf("There is a problem with given arguments, their number is incorrect or they're not as expected.\n\n");
+	ft_printf("REMINDER :\n\n");
 	fractol_man();
-	ft_printf("Exiting progam...\n");
-	prog_exit();
+	ft_printf("Exiting program...\n");
+	// prog_exit();
+	exit(1);
 }
 
 void	fractol_man()

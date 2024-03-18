@@ -6,12 +6,12 @@
 #    By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 18:05:18 by pmateo            #+#    #+#              #
-#    Updated: 2024/02/19 17:09:25 by pmateo           ###   ########.fr        #
+#    Updated: 2024/03/18 07:17:14 by pmateo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-FLAGS = -Werror -Wextra -Wall
+FLAGS = -Werror -Wextra -Wall -g3 -g
 RM = rm -f
 .DEFAULT_GOAL := all
 
@@ -29,11 +29,14 @@ DIRINC_MLX = ${DIR_MLX}
 INCFILES = ${DIRINC_FRACTOL}/fractol.h
 
 DIR_SRCS = ./SRCS/
-SRCS =				fractol.c
+SRCS =				main.c ini.c \
+					render.c utils.c \
+					utils_maths.c error.c \
+					mandelbrot.c julia.c mandelbox.c
 
 OBJ = ${SRCS:.c=.o}
 
-%.o: ${DIR_SRCS}%.c
+%.o: ${DIR_SRCS}%.c ${INCFILES}
 	@${CC} ${FLAGS} -c $< -o $@ -I ${DIRINC_FRACTOL} -I ${DIRINC_LIBFT} -I ${DIRINC_MLX}
 
 ${LIBFT}:
@@ -42,8 +45,8 @@ ${LIBFT}:
 ${MLX}:
 	@${MAKE} -s -C ${DIR_MLX}
 
-${NAME}: ${OBJ} ${LIBFT} ${MLX} 
-	@${CC} ${FLAGS} -o ${NAME} ${OBJ} -I ${DIRINC_FRACTOL} -I ${DIRINC_LIBFT} -I ${DIRINC_MLX} -L ${DIR_MLX} -lXext -lX11 -lmlx
+${NAME}: ${OBJ} ${LIBFT} ${MLX} ${INCFILES}
+	@${CC} ${FLAGS} -o ${NAME} ${OBJ} -I ${DIRINC_FRACTOL} -I ${DIRINC_LIBFT} -I ${DIRINC_MLX} -L ${DIR_MLX} -lXext -lX11 -lmlx -lm -L ${DIR_LIBFT} -lft
 
 all: ${LIBFT} ${MLX} ${NAME}
 
