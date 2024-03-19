@@ -6,7 +6,7 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 21:29:38 by pmateo            #+#    #+#             */
-/*   Updated: 2024/03/19 22:36:59 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/03/19 22:47:23 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ int	handle_keypress(int keysm, t_data *data)
 
 int	handle_mouse(int keysm, int x, int y, t_data *data)
 {
-	if (keysm == Mdown)
+	if (keysm == MDOWN)
 		mouse_zoom(2, data);
-	else if (keysm == Mup)
+	else if (keysm == MUP)
 	{
 		mouse_zoom(0.5, data);
 		x -= WIDTH / 2;

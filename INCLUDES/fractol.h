@@ -6,7 +6,7 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 20:28:00 by pmateo            #+#    #+#             */
-/*   Updated: 2024/03/19 22:44:27 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/03/19 22:47:48 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,8 @@
 # define FOUR 65430
 # define FIVE 65437
 // MOUSE
-# define LCLICK 1
-# define RCLICK 3
 # define MUP	4
 # define MDOWN	5
-# define MCLICK 2
 
 typedef struct s_complex
 {
