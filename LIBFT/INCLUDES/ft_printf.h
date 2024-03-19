@@ -6,7 +6,7 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 03:45:42 by pmateo            #+#    #+#             */
-/*   Updated: 2024/01/08 16:38:58 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/03/19 23:20:34 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <stdint.h>
 
-#include "libft.h"
+# include "libft.h"
 
 typedef struct s_flags
 {

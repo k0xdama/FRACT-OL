@@ -6,7 +6,7 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:58:31 by pmateo            #+#    #+#             */
-/*   Updated: 2024/03/19 22:23:19 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/03/19 23:19:28 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,13 @@ static int	is_dbl(char *str)
 {
 	int	i;
 
+	if (!str || !*str)
+		return (0);
 	i = 0;
-	if (str[i] == '-' && (str[i + 1] >= '0' && str[i + 1] <= '9'))
+	if (str[i] == '-')
 		i++;
+	if (str[i] < '0' || str[i] > '2')
+		return (0);
 	while (str[i])
 	{
 		if ((str[i] < '0' || str[i] > '9') && (str[i] != '.'))

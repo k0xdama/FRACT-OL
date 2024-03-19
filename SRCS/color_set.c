@@ -6,7 +6,7 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:13:08 by pmateo            #+#    #+#             */
-/*   Updated: 2024/03/19 22:42:14 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/03/19 23:04:08 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	nature_set(t_data *data, int it)
 void	default_set(t_data *data, int it)
 {
 	if (data->color_set == DEFAULT)
-		data->color = (0xff006e * it);
+		data->color = (0xFCBE11 * it);
 	else if (data->color_set == DEFAULT_BIS)
-		data->color = (0xff006e * it % 128);
+		data->color = (0xFCBE11 * it % 128);
 }
