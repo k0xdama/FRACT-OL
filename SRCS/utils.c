@@ -6,7 +6,7 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 05:23:36 by pmateo            #+#    #+#             */
-/*   Updated: 2024/03/18 22:01:00 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/03/19 04:11:18 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@ int	prog_exit(t_data *data, int status)
 		mlx_destroy_image(data->mlxptr, data->img);
 	if (data->winptr)
 		mlx_destroy_window(data->mlxptr, data->winptr);
-	mlx_loop_end(data->mlxptr);
-	mlx_destroy_display(data->mlxptr);
-	free(data->mlxptr);
-	data->mlxptr = NULL;
+	if (data->mlxptr)
+	{
+		mlx_loop_end(data->mlxptr);
+		mlx_destroy_display(data->mlxptr);
+		free(data->mlxptr);
+		data->mlxptr = NULL;
+	}
 	exit(status);
 }
 

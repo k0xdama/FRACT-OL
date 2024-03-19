@@ -6,7 +6,7 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:58:31 by pmateo            #+#    #+#             */
-/*   Updated: 2024/03/19 03:37:59 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/03/19 04:17:08 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	is_dbl(char *str)
 	{
 		if (str[i] == '-' && (str[i + 1] < '0' && str[i + 1] > '9'))
 			return (0);
-		if ((str[i] < '0' && str[i] > '9') && (str[i] != '-') && (str[i] != '.'))
+		if ((str[i] < '0' || str[i] > '9') || (str[i] != '-') || (str[i] != '.'))
 			return (0);
 		if (str[i] == '.' && (ft_strchr(str+i+1, '.')))
 			return (0);
@@ -35,7 +35,7 @@ static void	check_args(int argc, char *argv[], t_data *data)
 	int state;
 	
 	state = 1;
-	if (argv[1][0] < '1' && argv[1][0] > '3')
+	if (argv[1][0] < '1' || argv[1][0] > '3' || argv[1][1])
 		bad_args(data);
 	data->choice = ft_atoi(argv[1]);
 	if (argc == 4 && data->choice == JULIA)
@@ -54,7 +54,7 @@ int	main(int argc, char *argv[])
 	t_data	data;
 
 	init_data(&data);
-	if (argc < 2 || argc > 4 || argc == 3)
+	if (argc != 2 && argc != 4)
 		bad_args(&data);
 	if (ft_strncmp(argv[1], "help", 4) == 0)
 	{
