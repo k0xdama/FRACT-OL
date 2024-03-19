@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   color_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/17 23:06:00 by pmateo            #+#    #+#             */
-/*   Updated: 2024/03/19 22:40:08 by pmateo           ###   ########.fr       */
+/*   Created: 2024/03/19 16:50:11 by pmateo            #+#    #+#             */
+/*   Updated: 2024/03/19 22:38:11 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../INCLUDES/fractol.h"
 
-int	julia(t_data *data, t_complex z)
+void	color_path(t_data *data, int set, int it)
 {
-	int			it;
-	t_complex	c;
-
-	it = 0;
-	c.real = data->julia_const.real;
-	c.i = data->julia_const.i;
-	while (it < data->max_it)
+	if (it == data->max_it)
+		data->color = 0x000000;
+	else
 	{
-		if (((z.real * z.real) + (z.i * z.i) > data->esc_value))
-			break ;
-		z = sum_complex(square_complex(z), c);
-		it ++;
+		if (set == DEFAULT || set == DEFAULT_BIS)
+			default_set(data, it);
+		else if (set == PURPLE_GRAD)
+			purple_set(data, it);
+		else if (set == WINTER)
+			winter_set(data, it);
+		else if (set == SUNSET)
+			sunset_set(data, it);
+		else if (set == NATURE)
+			nature_set(data, it);
 	}
-	return (it);
 }

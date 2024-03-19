@@ -6,7 +6,7 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 05:23:36 by pmateo            #+#    #+#             */
-/*   Updated: 2024/03/19 04:11:18 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/03/19 22:35:41 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ int	prog_exit(t_data *data, int status)
 	exit(status);
 }
 
-double handle_decimals(char *str)
+double	handle_decimals(char *str)
 {
 	double	decimals;
 	double	divisor;
-	
+
 	decimals = 0;
 	divisor = 1;
 	while ((*str >= '0' && *str <= '9') && (*str))
@@ -47,15 +47,12 @@ double handle_decimals(char *str)
 double	atodbl(char	*str)
 {
 	double	result;
-	double decimals;
 	double	sign;
-	int	i;
-	
+	int		i;
+
 	result = 0.0;
-	decimals = 0.0;
 	sign = 1.0;
 	i = 0;
-
 	while (str[i] != '\0' && str[i] != '.')
 	{
 		if (str[i] == '-' && (str[i + 1] >= '0' && str[i + 1] <= '9'))
@@ -71,7 +68,7 @@ double	atodbl(char	*str)
 			i++;
 		}
 		if (str[i] == '.')
-			decimals = handle_decimals(str+i+1);
+			result = result + handle_decimals(str + i + 1);
 	}
-	return ((result + decimals) * sign);
+	return (result * sign);
 }

@@ -6,7 +6,7 @@
 #    By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 18:05:18 by pmateo            #+#    #+#              #
-#    Updated: 2024/03/18 21:54:50 by pmateo           ###   ########.fr        #
+#    Updated: 2024/03/19 22:18:02 by pmateo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,8 @@ INCFILES = ${DIRINC_FRACTOL}/fractol.h
 DIR_SRCS = ./SRCS/
 SRCS =				main.c ini.c \
 					render.c utils.c events.c \
-					utils_maths.c error.c \
-					mandelbrot.c julia.c mandelbox.c 
+					utils_maths.c error.c color_utils.c \
+					color_set.c mandelbrot.c julia.c mandelbox.c 
 
 OBJ = ${SRCS:.c=.o}
 
@@ -49,6 +49,7 @@ ${NAME}: ${OBJ} ${LIBFT} ${MLX} ${INCFILES}
 	@${CC} ${FLAGS} -o ${NAME} ${OBJ} -I ${DIRINC_FRACTOL} -I ${DIRINC_LIBFT} -I ${DIRINC_MLX} -L ${DIR_MLX} -lXext -lX11 -lmlx -lm -L ${DIR_LIBFT} -lft
 
 all: ${LIBFT} ${MLX} ${NAME}
+		@echo "\033[1;5;32m# FRACT_OL READY ! #\033[0m"
 
 bonus: all
 

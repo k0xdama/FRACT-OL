@@ -6,7 +6,7 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 06:15:55 by pmateo            #+#    #+#             */
-/*   Updated: 2024/03/19 04:27:42 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/03/19 22:39:26 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static double	ballfold(double m, double r)
 	return (m);
 }
 
-static double boxfold(double v)
+static double	boxfold(double v)
 {
 	if (v > 1)
 		v = 2 - v;
@@ -32,10 +32,10 @@ static double boxfold(double v)
 
 int	mandelbox(t_data *data, t_complex c)
 {
-	int	it;
-	double magnitude;
+	int			it;
+	double		magnitude;
 	t_complex	v;
-	
+
 	it = 0;
 	magnitude = 0;
 	v.real = c.real;
@@ -48,9 +48,8 @@ int	mandelbox(t_data *data, t_complex c)
 		v.real = v.real * data->mb_s * ballfold(magnitude, data->mb_r) + c.real;
 		v.i = v.i * data->mb_s * ballfold(magnitude, data->mb_r) + c.i;
 		if (sqrt(magnitude) > 2)
-			break;
+			break ;
 		it++;
 	}
 	return (it);
-	
 }

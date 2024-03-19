@@ -6,16 +6,15 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 21:29:38 by pmateo            #+#    #+#             */
-/*   Updated: 2024/03/19 03:38:36 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/03/19 22:36:59 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../INCLUDES/fractol.h"
 
-
 static void	move_udlr(int orientation, double distance, t_data *data)
 {
-	t_complex c;
+	t_complex	c;
 
 	c.real = data->xmax - data->xmin;
 	c.i = data->ymax - data->ymin;
@@ -43,7 +42,7 @@ static void	move_udlr(int orientation, double distance, t_data *data)
 
 static void	mouse_zoom(double m, t_data *data)
 {
-	t_complex c;
+	t_complex	c;
 
 	c.real = data->xmin - data->xmax;
 	c.i = data->ymax - data->ymin;
@@ -65,6 +64,18 @@ int	handle_keypress(int keysm, t_data *data)
 		move_udlr(LEFT, 0.1, data);
 	else if (keysm == RIGHT)
 		move_udlr(RIGHT, 0.1, data);
+	else if (keysm == ZERO)
+		data->color_set = DEFAULT;
+	else if (keysm == ONE)
+		data->color_set = DEFAULT_BIS;
+	else if (keysm == TWO)
+		data->color_set = WINTER;
+	else if (keysm == THREE)
+		data->color_set = SUNSET;
+	else if (keysm == FOUR)
+		data->color_set = NATURE;
+	else if (keysm == FIVE)
+		data->color_set = PURPLE_GRAD;
 	fractal_render(data);
 	return (0);
 }

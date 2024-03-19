@@ -6,11 +6,18 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:53:51 by pmateo            #+#    #+#             */
-/*   Updated: 2024/03/15 01:59:11 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/03/19 18:03:14 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCLUDES/fractol.h"
+# include <unistd.h>
+# include <stdio.h>
+# include <stddef.h>
+# include <stdlib.h>
+# include <math.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
+# include "../minilibx-linux/mlx.h"
 
 #define WINDOW_WIDTH 1920
 #define WINDOW_HEIGHT 1080
@@ -41,6 +48,7 @@ int	handle_keypress(int keysm, t_data *data)
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 		data->win_ptr = NULL;
 	}
+	printf("%d\n", keysm);
 	return (0);
 }
 

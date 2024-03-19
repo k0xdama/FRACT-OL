@@ -35,5 +35,7 @@ ORGANISATION DES FICHIERS :
 ------UTILS------
 
 
-ETAPE :
-- 
+COULEUR :
+- ba181b * it % 128;
+- ccff33 * it % 510;
+- 70d6ff

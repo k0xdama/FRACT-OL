@@ -6,7 +6,7 @@
 /*   By: pmateo <pmateo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 18:10:27 by pmateo            #+#    #+#             */
-/*   Updated: 2024/03/19 04:28:34 by pmateo           ###   ########.fr       */
+/*   Updated: 2024/03/19 22:36:16 by pmateo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static void	my_pixel_put(t_data *data, int color, int x, int y)
 
 static int	pixel_path(int x, int y, t_data *data)
 {
-	int	it;
-	t_complex c;
+	int			it;
+	t_complex	c;
 
 	it = 0;
 	c.real = scale(x, data->xmin, data->xmax, WIDTH);
@@ -47,8 +47,6 @@ static int	pixel_path(int x, int y, t_data *data)
 		it = julia(data, c);
 	if (data->choice == MANDELBOX)
 		it = mandelbox(data, c);
-	if (it == data->max_it)
-		data->color = 0x000000;
 	return (it);
 }
 
@@ -67,9 +65,9 @@ int	fractal_render(t_data *data)
 		x = 0;
 		while (x < WIDTH)
 		{
-			data->color = 0xD8E2DC;
 			it = pixel_path(x, y, data);
-			my_pixel_put(data, (data->color * it), x, y);
+			color_path(data, data->color_set, it);
+			my_pixel_put(data, (data->color), x, y);
 			x++;
 		}
 	}
